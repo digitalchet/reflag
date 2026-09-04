@@ -7,12 +7,11 @@ It works across HTTP and HTTPS websites by default, with a selected-websites mod
 ## Highlights
 
 - Restores all ISO country flags plus England, Scotland, and Wales.
-- Adds localized country-name tooltips on hover.
-- Handles live, dynamically loaded content such as X timelines.
-- Lets you toggle flags individually, by region, or with quick bulk controls—without checkbox-heavy lists.
-- Shows selected flags in a compact, scrollable group and can display cached website favicons beside selected domains.
-- Preserves the original Unicode and avoids editable fields and sensitive page structures.
-- Works broadly by default, or only on a website list you control.
+- Works dynamically across all websites by default, or on your own selected websites.
+- Gives you as much control as you need, from enabling the entire global set, to selected regions, to individual options, quickly & easily.
+- A great search functionality is included.
+- Preserves original Unicode graphemes and avoids editable fields and sensitive page structures.
+- Flags include tooltips on mouse hover.
 
 ## Install from an unpacked folder
 
@@ -46,7 +45,7 @@ Continental groupings are derived from the [Unicode Common Locale Data Repositor
 ## Permissions
 
 - `storage` saves the master switch, scope, selected websites, and selected flags.
-- `favicon` lets the settings page show browser-cached icons for selected domains. Reflag does not contact an external favicon service.
+- `favicon` lets the settings page show browser-cached icons for selected domains. Reflag does not contact external favicon services.
 - Reflag runs on HTTP and HTTPS pages so it can correct system-level flag-rendering failures wherever they appear.
 - The **Selected websites only** setting prevents scanning and rendering outside the locally stored domain list, although the browser's installation-time host permission remains present.
 - Browser-internal pages, extension stores, and other protected browser surfaces do not permit content-script access.
