@@ -50,13 +50,27 @@ Continental groupings are derived from the [Unicode Common Locale Data Repositor
 - The **Selected websites only** setting prevents scanning and rendering outside the locally stored domain list, although the browser's installation-time host permission remains present.
 - Browser-internal pages, extension stores, and other protected browser surfaces do not permit content-script access.
 
-The extension contains no telemetry, analytics, advertising, remote code, or background network requests. See `PRIVACY.md` and `SECURITY.md`.
+The extension contains no telemetry, analytics, advertising, remote code, or background network requests. See [Privacy](docs/PRIVACY.md) and [Security](.github/SECURITY.md).
 
 ## Artwork and licensing
 
 Flag SVG artwork is from [Twemoji](https://github.com/jdecked/twemoji), version 17.0.3. Copyright 2014–2021 Twitter and other contributors. The graphics are licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). A copy is included as `LICENSE-GRAPHICS`.
 
 The extension code is released under the MIT License; see `LICENSE`.
+
+## Project layout
+
+- `assets/flags/` — bundled Twemoji flag artwork required at runtime.
+- `icons/` — packaged toolbar and extension icons.
+- `design/` — editable design-source artwork.
+- `docs/` — privacy, architecture, and project-structure documentation.
+- `media/screenshots/` — store-listing previews and promotional imagery.
+- `website/` — future product website, kept separate from extension runtime code.
+- `.github/` — GitHub-specific community and security files.
+- `tests/` — interaction, performance, and scope regression checks.
+- `releases/` — local packaged builds; release files are intentionally excluded from Git.
+
+The manifest and executable extension files remain at the repository root so a cloned repository can be loaded directly as an unpacked extension. See [Project structure](docs/PROJECT_STRUCTURE.md) for details.
 
 ## Release
 
