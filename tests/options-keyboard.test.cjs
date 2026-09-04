@@ -91,7 +91,7 @@ let browser;
   if (JSON.stringify(visibleAfter) !== JSON.stringify(expectedAfter)) throw new Error(`Remaining results mismatch: ${JSON.stringify(visibleAfter)}`);
   if (singleAfterCanada !== '') throw new Error(`Single search was not cleared: ${singleAfterCanada}`);
   if (checkedAfterNone !== 0 || emptyMessage !== 'No flags are currently enabled.') throw new Error(`Disable All failed: ${checkedAfterNone}, ${emptyMessage}`);
-  if (checkedAfterAll !== 252) throw new Error(`Enable All failed: ${checkedAfterAll}`);
+  if (checkedAfterAll !== 261) throw new Error(`Enable All failed: ${checkedAfterAll}`);
   if (helpOpen.expanded !== 'true' || helpOpen.hidden !== 'false' || helpOpen.inert) throw new Error(`Help did not open accessibly: ${JSON.stringify(helpOpen)}`);
   if (helpClosed.expanded !== 'false' || helpClosed.hidden !== 'true' || !helpClosed.inert) throw new Error(`Help did not close accessibly: ${JSON.stringify(helpClosed)}`);
   console.log(JSON.stringify({ initiallyFocused, addedSite, emptySiteMessage, typeResult, spaceToggled: beforeSpace !== afterSpace, visibleBefore, queueAfterChina, visibleAfter, singleAfterCanada, checkedAfterNone, checkedAfterAll, helpOpen, helpClosed }));

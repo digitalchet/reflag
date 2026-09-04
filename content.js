@@ -3,9 +3,10 @@
 
   const SKIP = 'input, textarea, select, option, [contenteditable]:not([contenteditable="false"]), script, style, noscript, template, code, pre, svg, math, .rtf-flag';
   const REGIONAL_PAIR = /[\u{1F1E6}-\u{1F1FF}]{2}/u;
-  const ISO_CODES = new Set(('AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW').split(' '));
+  const REGION_CODES = new Set(('AC AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CP CR CU CV CW CX CY CZ DE DG DJ DK DM DO DZ EA EC EE EG EH ER ES ET EU FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU IC ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TA TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM UN US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW').split(' '));
   const DEFAULT_ENABLED = new Set(['US', 'GB', 'AU', 'CA', 'NZ']);
-  const DEFAULTS = { enabled: true, scope: 'all', selectedSites: [], disabledFlags: [...ISO_CODES].filter(code => !DEFAULT_ENABLED.has(code)).map(code => code.toLowerCase()).concat(['england', 'scotland', 'wales']) };
+  const REGION_NAMES = { AC: 'Ascension Island', CP: 'Clipperton Island', DG: 'Diego Garcia', EA: 'Ceuta & Melilla', EU: 'European Union', IC: 'Canary Islands', TA: 'Tristan da Cunha', UN: 'United Nations', XK: 'Kosovo' };
+  const DEFAULTS = { enabled: true, scope: 'all', selectedSites: [], disabledFlags: [...REGION_CODES].filter(code => !DEFAULT_ENABLED.has(code)).map(code => code.toLowerCase()).concat(['england', 'scotland', 'wales']) };
   const SUBDIVISIONS = new Map([
     ['\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}', ['england', 'Flag of England']],
     ['\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}', ['scotland', 'Flag of Scotland']],
@@ -37,10 +38,10 @@
     }
     if (!REGIONAL_PAIR.test(sequence)) return null;
     const code = regionalCode(sequence);
-    if (!ISO_CODES.has(code)) return null;
+    if (!REGION_CODES.has(code)) return null;
     if (disabledFlags.has(code.toLowerCase())) return null;
-    let country = code;
-    try { country = new Intl.DisplayNames([document.documentElement.lang || navigator.language || 'en'], { type: 'region' }).of(code) || code; } catch (_) {}
+    let country = REGION_NAMES[code] || code;
+    try { country = REGION_NAMES[code] || new Intl.DisplayNames([document.documentElement.lang || navigator.language || 'en'], { type: 'region' }).of(code) || code; } catch (_) {}
     return { file: code.toLowerCase(), label: `Flag of ${country}` };
   }
 
