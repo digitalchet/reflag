@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reflag settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div class="brand">
+        <img src="icons/icon128.png" alt="">
+        <div>
+          <h1>Reflag</h1>
+          <p>Restore the flags.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="help-button" class="help-button" type="button" aria-label="Open help" aria-controls="help-panel" aria-expanded="false">?</button>
+      </div>
+    </header>
+    <p class="introduction">Turn missing flag emoji and letter codes back into the flags they were meant to be. Reflag keeps the original Unicode intact and processes everything locally.</p>
+    <section class="sites-panel">
+      <div class="sites-option">
+        <span><strong>Selected websites only</strong><small>Run Reflag only on websites you choose</small></span>
+        <button id="selected-sites-mode" class="switch" type="button" role="switch" aria-checked="false" aria-label="Selected websites only" aria-controls="site-controls" aria-expanded="false"><span aria-hidden="true"></span></button>
+      </div>
+      <div id="site-controls" hidden>
+        <p>A domain also includes its subdomains.</p>
+        <form id="site-form">
+          <label for="site-input">Website domain</label>
+          <div class="site-entry">
+            <input id="site-input" type="text" inputmode="url" placeholder="example.com" autocomplete="off">
+            <button type="submit">Add website</button>
+          </div>
+          <p id="site-message" role="status" aria-live="polite"></p>
+        </form>
+        <div id="site-list" class="site-list"></div>
+      </div>
+    </section>
+    <section class="enabled-panel flag-group">
+      <div class="enabled-heading">
+        <div><h2>Selected flags</h2><small id="selected-count"></small></div>
+        <div class="all-flags-control"><span>Enable all</span><button id="all-flags-mode" class="switch" type="button" role="switch" aria-checked="false" aria-label="Enable all flags"><span aria-hidden="true"></span></button></div>
+      </div>
+      <div id="enabled-flags" class="enabled-flags" aria-label="Selected flags"></div>
+    </section>
+    <label class="search">
+      <span>Search all flags</span>
+      <input id="search" type="search" placeholder="Country or codes: cn, ru, fr" autofocus autocomplete="off">
+      <small class="search-hint">Separate several countries or codes with commas.</small>
+    </label>
+    <div id="regions"></div>
+    <p id="saved" role="status" aria-live="polite"></p>
+    <footer>
+      <div class="support">
+        <span>If you found this extension useful,</span>
+        <a class="kofi-button" href="https://ko-fi.com/digitalchet" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">☕</span> Buy me a coffee</a>
+      </div>
+      <a href="https://digital-impulse.com/" target="_blank" rel="noopener noreferrer">A Digital*Impulse Creation.</a>
+    </footer>
+  </main>
+  <div id="help-scrim" class="help-scrim"></div>
+  <aside id="help-panel" class="help-panel" aria-hidden="true" aria-labelledby="help-title" inert>
+    <div class="help-heading">
+      <h2 id="help-title">How to use Reflag</h2>
+      <button id="help-close" type="button" aria-label="Close help">×</button>
+    </div>
+    <section>
+      <h3>Find flags quickly</h3>
+      <p>The search field is ready when this page opens. You can also start typing after clicking a flag or region heading, and your typing will move into search automatically.</p>
+      <p>Search by country name or two-letter code. Separate several searches with commas:</p>
+      <code>cn, ru, it, sp, de, fr</code>
+      <p>Selecting a result removes its search term while leaving the others ready. A single completed search clears automatically.</p>
+    </section>
+    <section>
+      <h3>Choose individually or by region</h3>
+      <p>Press any flag to toggle it. Expand a continental section to browse its flags or use its <strong>All</strong> button for the whole region. The switch beside Selected flags enables or disables the complete collection.</p>
+    </section>
+    <section>
+      <h3>Website access</h3>
+      <p>The extension works on HTTP and HTTPS websites by default. Turn on the Selected websites only switch to reveal the domain list and restrict Reflag to those websites. Favicons are read from the browser when available; no external icon service is contacted.</p>
+    </section>
+    <section>
+      <h3>Privacy and text integrity</h3>
+      <p>Everything runs locally. The extension does not track browsing or send page content anywhere. It preserves the original Unicode for copying, search, and accessibility.</p>
+    </section>
+  </aside>
+  <script src="regions.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

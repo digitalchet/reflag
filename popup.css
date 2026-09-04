@@ -1,0 +1,23 @@
+:root {
+  color-scheme: light dark;
+  font: 14px/1.4 system-ui, sans-serif;
+}
+body { margin: 0; min-width: 280px; background: #fff; color: #16202a; }
+main { padding: 16px; }
+h1 { margin: 0 0 14px; font-size: 18px; }
+.tagline { margin: -11px 0 12px; color: #536471; font-size: 12px; }
+.master { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #d8dee4; font-weight: 650; }
+fieldset { margin: 14px 0 0; padding: 0; border: 0; }
+legend { margin-bottom: 8px; font-weight: 650; }
+fieldset label { display: block; padding: 6px 0; }
+small { margin-left: 5px; color: #536471; }
+button { width: 100%; margin-top: 12px; padding: 8px; border: 1px solid #aab4be; border-radius: 7px; background: transparent; color: inherit; cursor: pointer; font-weight: 650; }
+.note, #status { margin: 10px 0 0; color: #536471; font-size: 12px; }
+#status { min-height: 17px; color: #08783e; }
+#status.error { color: #b42318; }
+@media (prefers-color-scheme: dark) {
+  body { background: #15202b; color: #f0f3f4; }
+  .master { border-color: #38444d; }
+  .note, .tagline, #status, small { color: #8b98a5; }
+  #status.error { color: #ff8a80; }
+}

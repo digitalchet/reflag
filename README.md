@@ -1,0 +1,72 @@
+# Reflag — Restore the flags
+
+Reflag turns missing flag emoji and letter codes back into the flags they were meant to be. It preserves the original Unicode text for copying, search, and accessibility.
+
+It works across HTTP and HTTPS websites by default, with a selected-websites mode whenever you want a narrower scope. Everything runs locally in your browser—no tracking, advertising, or collection of browsing data.
+
+## Highlights
+
+- Restores all ISO country flags plus England, Scotland, and Wales.
+- Adds localized country-name tooltips on hover.
+- Handles live, dynamically loaded content such as X timelines.
+- Lets you toggle flags individually, by region, or with quick bulk controls—without checkbox-heavy lists.
+- Shows selected flags in a compact, scrollable group and can display cached website favicons beside selected domains.
+- Preserves the original Unicode and avoids editable fields and sensitive page structures.
+- Works broadly by default, or only on a website list you control.
+
+## Install from an unpacked folder
+
+1. Unzip the release.
+2. Open `chrome://extensions` in Chrome.
+3. Turn on **Developer mode**.
+4. Click **Load unpacked** and choose the unzipped `reflag` folder.
+5. Pin the extension if desired. It runs on HTTP and HTTPS websites by default; the popup can restrict it to your selected websites, turn it off, or open the flag and website settings. The initial enabled set is the United States, United Kingdom, Australia, Canada, and New Zealand.
+
+After changing the scope, existing open pages may need one refresh to restore flags already present before the extension loaded.
+
+## Development checks
+
+The `tests` folder contains browser interaction, dynamic-content performance, and manifest/scope regression checks. They use Node.js and Playwright with a locally installed Chromium-based browser; the extension itself has no runtime package dependencies.
+
+## How it works
+
+- A grapheme/sequence-aware scanner recognises pairs of Unicode Regional Indicator Symbols and the full Unicode tag sequences for England, Scotland, and Wales.
+- It works on initial content and watches dynamic sites with `MutationObserver`. The main test case is X post text such as `[data-testid='tweetText']` containing raw `🇬🇧`.
+- The extension wraps—not deletes—the original Unicode. The text stays in the DOM for copy and find/search; a local SVG is positioned over it, and its wrapper exposes an accessible country name. Turning the extension off unwraps processed flags back to plain text.
+- Inline sizing compensates for the transparent padding in Twemoji's square flag canvases. X post text receives an additional proportional optical offset because its line-box positioning differs from ordinary document text.
+- Editable controls, `contenteditable`, scripts, styles, code blocks, and already processed flags are skipped.
+- Processing is batched per animation frame and settings are stored with Chrome sync storage.
+- Disabled or unsupported flag sequences are left completely untouched, preventing no-op DOM mutations and observer feedback loops.
+- The settings page shows the current enabled set, supports individual flags, and provides collapsible continental groups with group-level switches. Region groupings follow Unicode CLDR territory containment, with England, Scotland, and Wales listed under Europe.
+- The switch beside Selected flags enables or disables the complete flag collection, while the side-panel tutorial explains search, selection, website scope, privacy, and Unicode preservation.
+- The settings search is focused on opening and supports type-to-search after clicking flag or region controls. It accepts comma-separated country names or codes; selecting a result consumes its matching term while leaving any remaining terms active. Standard navigation keys and modified browser shortcuts are not intercepted.
+
+Continental groupings are derived from the [Unicode Common Locale Data Repository territory-containment data](https://github.com/unicode-org/cldr-json). Unicode data and software are subject to the [Unicode License](https://www.unicode.org/license.txt).
+
+## Permissions
+
+- `storage` saves the master switch, scope, selected websites, and selected flags.
+- `favicon` lets the settings page show browser-cached icons for selected domains. Reflag does not contact an external favicon service.
+- Reflag runs on HTTP and HTTPS pages so it can correct system-level flag-rendering failures wherever they appear.
+- The **Selected websites only** setting prevents scanning and rendering outside the locally stored domain list, although the browser's installation-time host permission remains present.
+- Browser-internal pages, extension stores, and other protected browser surfaces do not permit content-script access.
+
+The extension contains no telemetry, analytics, advertising, remote code, or background network requests. See `PRIVACY.md` and `SECURITY.md`.
+
+## Artwork and licensing
+
+Flag SVG artwork is from [Twemoji](https://github.com/jdecked/twemoji), version 17.0.3. Copyright 2014–2021 Twitter and other contributors. The graphics are licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). A copy is included as `LICENSE-GRAPHICS`.
+
+The extension code is released under the MIT License; see `LICENSE`.
+
+## Release
+
+The current release is **Reflag v1.00** (`1.0.0` in the browser manifest). Future functional changes will use incremented version numbers.
+
+## Notes
+
+The ISO list is intentionally limited to current ISO 3166-1 alpha-2 assignments. The parser will encounter other regional-indicator pairs but displays an image only when a corresponding bundled asset exists. Broken or absent assets therefore remain as their untouched Unicode text.
+
+[A Digital*Impulse Creation.](https://digital-impulse.com/)
+
+[If you found this extension useful, buy me a coffee on Ko-fi.](https://ko-fi.com/digitalchet)

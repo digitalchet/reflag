@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reflag — Restore the flags</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>Reflag</h1>
+    <p class="tagline">Restore the flags.</p>
+    <label class="master">
+      <span>Enable flag restoration</span>
+      <input id="enabled" type="checkbox">
+    </label>
+    <fieldset>
+      <legend>Where should it run?</legend>
+      <label><input type="radio" name="scope" value="all"> All websites <small>Default</small></label>
+      <label><input type="radio" name="scope" value="selected"> Selected websites only</label>
+    </fieldset>
+    <button id="settings" type="button">Choose flags and websites…</button>
+    <p id="status" role="status"></p>
+    <p class="note">Original Unicode remains available for copying, search, and accessibility.</p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
