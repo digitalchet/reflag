@@ -7,7 +7,7 @@ const path = require('path');
     executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
   });
   const page = await browser.newPage();
-  await page.setContent('<div id="enabled">Enabled: 🇬🇧</div><div id="rgi">RGI extras: 🇦🇨🇨🇵🇩🇬🇪🇦🇪🇺🇮🇨🇹🇦🇺🇳🇽🇰</div><div id="disabled">Disabled: 🇫🇷</div>');
+  await page.setContent('<div id="enabled">Enabled: 🇬🇧</div><div id="rgi">RGI extras: 🇦🇨🇨🇵🇨🇶🇩🇬🇪🇦🇪🇺🇮🇨🇹🇦🇺🇳🇽🇰</div><div id="disabled">Disabled: 🇫🇷</div>');
   await page.evaluate(() => {
     window.testMutationCount = 0;
     new MutationObserver(records => { window.testMutationCount += records.length; })
@@ -37,7 +37,7 @@ const path = require('path');
 
   if (result.enabledWrappers !== 1) throw new Error(`Expected one enabled wrapper; got ${result.enabledWrappers}`);
   if (result.enabledTooltip !== 'Flag of United Kingdom') throw new Error(`Tooltip mismatch: ${result.enabledTooltip}`);
-  if (result.extraRgiWrappers !== 9) throw new Error(`Expected nine additional RGI wrappers; got ${result.extraRgiWrappers}`);
+  if (result.extraRgiWrappers !== 10) throw new Error(`Expected ten additional RGI wrappers; got ${result.extraRgiWrappers}`);
   if (result.disabledWrappers !== 0) throw new Error(`Disabled flag was wrapped ${result.disabledWrappers} times`);
   if (result.disabledText !== 'Disabled: 🇫🇷') throw new Error('Disabled Unicode text changed');
   if (result.finalCount !== result.firstCount) throw new Error(`Mutations did not settle: ${result.firstCount} -> ${result.finalCount}`);

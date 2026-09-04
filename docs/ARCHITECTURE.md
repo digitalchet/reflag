@@ -4,7 +4,7 @@ Reflag is a dependency-free Manifest V3 browser extension. Its runtime consists 
 
 ## Content renderer
 
-`content.js` recognises all 258 Unicode RGI regional-indicator flag pairs and the full Unicode tag sequences for England, Scotland, and Wales. This includes nine RGI entries outside the assigned ISO 3166-1 set: AC, CP, DG, EA, EU, IC, TA, UN, and XK. It replaces only matching text-node ranges with a wrapper that retains the original Unicode and overlays a bundled SVG. Editable controls, scripts, styles, code blocks, SVG, mathematical markup, and previously processed flags are excluded.
+`content.js` recognises all 259 Unicode RGI regional-indicator flag pairs and the full Unicode tag sequences for England, Scotland, and Wales. This includes ten RGI entries outside the assigned ISO 3166-1 set: AC, CP, CQ, DG, EA, EU, IC, TA, UN, and XK. It replaces only matching text-node ranges with a wrapper that retains the original Unicode and overlays a bundled SVG. Editable controls, scripts, styles, code blocks, SVG, mathematical markup, and previously processed flags are excluded.
 
 Initial content is scanned after page load. A batched `MutationObserver` handles dynamic feeds while removing nested duplicate scan roots. Disabling Reflag or changing its scope unwraps generated elements back to their original text.
 

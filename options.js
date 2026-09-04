@@ -2,7 +2,7 @@ const ALL_IDS = FLAG_REGIONS.flatMap(region => region.codes).map(code => code.to
 const DEFAULT_ENABLED = new Set(['us', 'gb', 'au', 'ca', 'nz']);
 const DEFAULT_DISABLED = ALL_IDS.filter(id => !DEFAULT_ENABLED.has(id));
 const disabled = new Set();
-const specialNames = { ac: 'Ascension Island', cp: 'Clipperton Island', dg: 'Diego Garcia', ea: 'Ceuta & Melilla', eu: 'European Union', ic: 'Canary Islands', ta: 'Tristan da Cunha', un: 'United Nations', xk: 'Kosovo', england: 'England', scotland: 'Scotland', wales: 'Wales' };
+const specialNames = { ac: 'Ascension Island', cp: 'Clipperton Island', cq: 'Sark', dg: 'Diego Garcia', ea: 'Ceuta & Melilla', eu: 'European Union', ic: 'Canary Islands', ta: 'Tristan da Cunha', un: 'United Nations', xk: 'Kosovo', england: 'England', scotland: 'Scotland', wales: 'Wales' };
 const names = new Intl.DisplayNames([navigator.language || 'en'], { type: 'region' });
 const regionsRoot = document.querySelector('#regions');
 const enabledRoot = document.querySelector('#enabled-flags');

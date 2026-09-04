@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Reflag — Restore the flags",
-  "version": "1.0.1",
-  "version_name": "1.01",
+  "version": "1.0.2",
+  "version_name": "1.02",
   "description": "Restore missing flag emoji while preserving the original Unicode text. Private, configurable, and built for dynamic websites.",
   "permissions": ["storage", "favicon"],
   "action": {

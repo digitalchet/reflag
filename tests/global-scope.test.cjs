@@ -5,7 +5,7 @@ const root = path.resolve(__dirname, '..');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.json'), 'utf8'));
 const content = fs.readFileSync(path.join(root, 'content.js'), 'utf8');
 const popup = fs.readFileSync(path.join(root, 'popup.js'), 'utf8');
-const extraRgiCodes = ['ac', 'cp', 'dg', 'ea', 'eu', 'ic', 'ta', 'un', 'xk'];
+const extraRgiCodes = ['ac', 'cp', 'cq', 'dg', 'ea', 'eu', 'ic', 'ta', 'un', 'xk'];
 
 const matches = manifest.content_scripts?.[0]?.matches || [];
 if (!matches.includes('http://*/*') || !matches.includes('https://*/*')) throw new Error('Global HTTP/HTTPS content coverage is missing');

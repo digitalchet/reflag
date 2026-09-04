@@ -6,7 +6,7 @@ It works across HTTP and HTTPS websites by default, with a selected-websites mod
 
 ## Highlights
 
-- Restores all 258 Unicode RGI region flags plus England, Scotland, and Wales.
+- Restores all 259 Unicode RGI region flags plus England, Scotland, and Wales.
 - Works dynamically across all websites by default, or on your own selected websites.
 - Gives you as much control as you need, from enabling the entire global set, to selected regions, to individual options, quickly & easily.
 - A great search functionality is included.
@@ -74,11 +74,11 @@ The manifest and executable extension files remain at the repository root so a c
 
 ## Release
 
-The current release is **Reflag v1.01** (`1.0.1` in the browser manifest). Future functional changes will use incremented version numbers.
+The current release is **Reflag v1.02** (`1.0.2` in the browser manifest). Future functional changes will use incremented version numbers.
 
 ## Notes
 
-The regional-indicator registry follows Unicode's RGI emoji flag sequences. It includes the 249 assigned ISO 3166-1 entries and nine additional Unicode-recognised region or organisation codes: AC, CP, DG, EA, EU, IC, TA, UN, and XK. England, Scotland, and Wales use full subdivision tag sequences. Unsupported regional-indicator pairs remain as untouched Unicode text.
+The regional-indicator registry follows Unicode's RGI emoji flag sequences. It includes the 249 assigned ISO 3166-1 entries and ten additional Unicode-recognised region or organisation codes: AC, CP, CQ, DG, EA, EU, IC, TA, UN, and XK. England, Scotland, and Wales use full subdivision tag sequences. Unsupported regional-indicator pairs remain as untouched Unicode text.
 
 [A Digital*Impulse Creation.](https://digital-impulse.com/)
 
