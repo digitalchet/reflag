@@ -6,14 +6,14 @@ It works across HTTP and HTTPS websites by default, with a selected-websites mod
 
 ## Highlights
 
-- Restores all 259 Unicode RGI region flags plus England, Scotland, and Wales.
+- Restores & displays all emoticon flags for the 262 Unicode graphemes that refer to flag-bearing entities.
 - Works dynamically across all websites by default, or on your own selected websites.
 - Gives you as much control as you need, from enabling the entire global set, to selected regions, to individual options, quickly & easily.
 - A great search functionality is included.
-- Preserves original Unicode graphemes and avoids editable fields and sensitive page structures.
+- Preserves the original Unicode grapheme in page code, but avoids editable fields and sensitive page structures.
 - Flags include tooltips on mouse hover.
 
-## Install from an unpacked folder
+## Installing from an unpacked folder
 
 1. Unzip the release.
 2. Open `chrome://extensions` in Chrome.
