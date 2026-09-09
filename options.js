@@ -18,7 +18,7 @@ const siteControls = document.querySelector('#site-controls');
 const allFlagsMode = document.querySelector('#all-flags-mode');
 const selectedCount = document.querySelector('#selected-count');
 const testFlagsRoot = document.querySelector('#test-flags');
-const TEST_CODES = ['US', 'GB', 'AU', 'CA', 'NZ', 'JP', 'ZA', 'BR', 'IN', 'DE', 'FR', 'IE', 'EU', 'UN', 'XK', 'CQ', 'AC', 'DG'];
+const TEST_CODES = ['US', 'GB', 'AU', 'CA', 'NZ', 'JP', 'ZA', 'BR', 'IN', 'DE', 'FR', 'IE', 'EU', 'UN', 'XK', 'CQ', 'AC'];
 
 const idFor = code => code.toLowerCase();
 const countryName = code => specialNames[code.toLowerCase()] || names.of(code.toUpperCase()) || code;

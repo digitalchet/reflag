@@ -27,7 +27,7 @@ After changing the scope, existing open pages may need one refresh to restore fl
 
 The following are genuine Unicode regional-indicator graphemes—not embedded images:
 
-> 🇺🇸 🇬🇧 🇦🇺 🇨🇦 🇳🇿 🇯🇵 🇿🇦 🇧🇷 🇮🇳 🇩🇪 🇫🇷 🇮🇪 🇪🇺 🇺🇳 🇽🇰 🇨🇶 🇦🇨 🇩🇬
+> 🇺🇸 🇬🇧 🇦🇺 🇨🇦 🇳🇿 🇯🇵 🇿🇦 🇧🇷 🇮🇳 🇩🇪 🇫🇷 🇮🇪 🇪🇺 🇺🇳 🇽🇰 🇨🇶 🇦🇨
 
 If some appear as two-letter codes or blank symbols, enable their entries in Reflag and view this page on a website where the extension is active. The Settings page also includes an interactive version that changes immediately as flags are enabled or disabled.
 
@@ -72,17 +72,17 @@ The extension code is released under the MIT License; see `LICENSE`.
 - `icons/` — packaged toolbar and extension icons.
 - `design/` — editable design-source artwork.
 - `docs/` — privacy, architecture, and project-structure documentation.
-- `media/screenshots/` — store-listing previews and promotional imagery.
-- `website/` — future product website, kept separate from extension runtime code.
 - `.github/` — GitHub-specific community and security files.
 - `tests/` — interaction, performance, and scope regression checks.
 - `releases/` — local packaged builds; release files are intentionally excluded from Git.
 
 The manifest and executable extension files remain at the repository root so a cloned repository can be loaded directly as an unpacked extension. See [Project structure](docs/PROJECT_STRUCTURE.md) for details.
 
+Local-only work areas such as `temp/`, `media/screenshots/`, and `website/` are intentionally excluded from Git until their contents are ready to publish.
+
 ## Release
 
-The current release is **Reflag v1.03** (`1.0.3` in the browser manifest). Future functional changes will use incremented version numbers.
+The current release is **Reflag v1.04** (`1.0.4` in the browser manifest). Future functional changes will use incremented version numbers.
 
 ## Notes
 

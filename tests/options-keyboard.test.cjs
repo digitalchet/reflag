@@ -86,7 +86,7 @@ let browser;
   await browser.close();
 
   if (initiallyFocused !== 'search') throw new Error(`Search was not initially focused: ${initiallyFocused}`);
-  if (previewCount !== 18 || initialPreviewImages !== 5 || disabledPreviewImages !== 0 || disabledRegionState !== 'false') throw new Error('Live flag preview did not reflect selection state');
+  if (previewCount !== 17 || initialPreviewImages !== 5 || disabledPreviewImages !== 0 || disabledRegionState !== 'false') throw new Error('Live flag preview did not reflect selection state');
   if (addedSite !== 'news.example.com' || clearedSiteInput !== '' || emptySiteMessage !== 'No websites selected yet.') throw new Error('Website allowlist add/remove failed');
   if (typeResult.active !== 'search' || typeResult.value !== 'f') throw new Error(`Type-to-search failed: ${JSON.stringify(typeResult)}`);
   if (beforeSpace === afterSpace) throw new Error('Space did not retain toggle-button behavior');

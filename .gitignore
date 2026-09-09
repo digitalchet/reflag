@@ -4,3 +4,6 @@ Thumbs.db
 node_modules/
 releases/*
 !releases/.gitkeep
+/temp/
+/media/screenshots/
+/website/
