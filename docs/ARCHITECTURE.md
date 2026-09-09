@@ -12,6 +12,8 @@ Initial content is scanned after page load. A batched `MutationObserver` handles
 
 Preferences are stored with `chrome.storage.sync`: the master state, website scope, selected domains, and disabled flag identifiers. Five flags are enabled initially: the United States, United Kingdom, Australia, Canada, and New Zealand.
 
+The settings page includes an interactive sample of genuine regional-indicator graphemes. Enabled examples receive the same bundled artwork used on websites, while disabled examples remain raw Unicode; toggling either the preview or the main flag controls updates both views immediately.
+
 The selected-websites scope compares the current hostname against locally stored domains and their subdomains. Cached site icons are requested through Chromium's built-in favicon facility; no external favicon provider is used.
 
 ## Assets and permissions

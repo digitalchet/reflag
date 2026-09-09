@@ -26,6 +26,12 @@ let browser;
   await page.addScriptTag({ path: path.join(root, 'options.js') });
 
   const initiallyFocused = await page.evaluate(() => document.activeElement.id);
+  const previewCount = await page.locator('.test-flag').count();
+  const initialPreviewImages = await page.locator('.test-flag img').count();
+  await page.locator('.test-flag[data-id="us"]').click();
+  const disabledPreviewImages = await page.locator('.test-flag[data-id="us"] img').count();
+  const disabledRegionState = await page.locator('.flags .flag[data-id="us"]').getAttribute('aria-pressed');
+  await page.locator('.test-flag[data-id="us"]').click();
   await page.locator('#selected-sites-mode').click();
   if (await page.locator('#site-controls').isHidden()) throw new Error('Selected-sites controls did not expand');
   await page.locator('#site-input').fill('https://News.Example.com/path');
@@ -80,6 +86,7 @@ let browser;
   await browser.close();
 
   if (initiallyFocused !== 'search') throw new Error(`Search was not initially focused: ${initiallyFocused}`);
+  if (previewCount !== 18 || initialPreviewImages !== 5 || disabledPreviewImages !== 0 || disabledRegionState !== 'false') throw new Error('Live flag preview did not reflect selection state');
   if (addedSite !== 'news.example.com' || clearedSiteInput !== '' || emptySiteMessage !== 'No websites selected yet.') throw new Error('Website allowlist add/remove failed');
   if (typeResult.active !== 'search' || typeResult.value !== 'f') throw new Error(`Type-to-search failed: ${JSON.stringify(typeResult)}`);
   if (beforeSpace === afterSpace) throw new Error('Space did not retain toggle-button behavior');
@@ -94,7 +101,7 @@ let browser;
   if (checkedAfterAll !== 262) throw new Error(`Enable All failed: ${checkedAfterAll}`);
   if (helpOpen.expanded !== 'true' || helpOpen.hidden !== 'false' || helpOpen.inert) throw new Error(`Help did not open accessibly: ${JSON.stringify(helpOpen)}`);
   if (helpClosed.expanded !== 'false' || helpClosed.hidden !== 'true' || !helpClosed.inert) throw new Error(`Help did not close accessibly: ${JSON.stringify(helpClosed)}`);
-  console.log(JSON.stringify({ initiallyFocused, addedSite, emptySiteMessage, typeResult, spaceToggled: beforeSpace !== afterSpace, visibleBefore, queueAfterChina, visibleAfter, singleAfterCanada, checkedAfterNone, checkedAfterAll, helpOpen, helpClosed }));
+  console.log(JSON.stringify({ initiallyFocused, previewCount, initialPreviewImages, disabledPreviewImages, addedSite, emptySiteMessage, typeResult, spaceToggled: beforeSpace !== afterSpace, visibleBefore, queueAfterChina, visibleAfter, singleAfterCanada, checkedAfterNone, checkedAfterAll, helpOpen, helpClosed }));
 })().catch(error => {
   console.error(error);
   browser?.close().catch(() => {});

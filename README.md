@@ -23,6 +23,14 @@ It works across HTTP and HTTPS websites by default, with a selected-websites mod
 
 After changing the scope, existing open pages may need one refresh to restore flags already present before the extension loaded.
 
+## Quick flag-rendering test
+
+The following are genuine Unicode regional-indicator graphemes—not embedded images:
+
+> 🇺🇸 🇬🇧 🇦🇺 🇨🇦 🇳🇿 🇯🇵 🇿🇦 🇧🇷 🇮🇳 🇩🇪 🇫🇷 🇮🇪 🇪🇺 🇺🇳 🇽🇰 🇨🇶 🇦🇨 🇩🇬
+
+If some appear as two-letter codes or blank symbols, enable their entries in Reflag and view this page on a website where the extension is active. The Settings page also includes an interactive version that changes immediately as flags are enabled or disabled.
+
 ## Development checks
 
 The `tests` folder contains browser interaction, dynamic-content performance, and manifest/scope regression checks. They use Node.js and Playwright with a locally installed Chromium-based browser; the extension itself has no runtime package dependencies.
@@ -74,7 +82,7 @@ The manifest and executable extension files remain at the repository root so a c
 
 ## Release
 
-The current release is **Reflag v1.02** (`1.0.2` in the browser manifest). Future functional changes will use incremented version numbers.
+The current release is **Reflag v1.03** (`1.0.3` in the browser manifest). Future functional changes will use incremented version numbers.
 
 ## Notes
 

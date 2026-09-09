@@ -42,6 +42,15 @@ button { padding: 9px 14px; border: 1px solid #aab4be; border-radius: 8px; backg
 .all-flags-control { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 650; }
 .enabled-flags { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); max-height: 225px; gap: 1px; overflow-y: auto; background: #e4e9ed; }
 .enabled-flags > .empty { grid-column: 1 / -1; padding: 16px; background: #fff; }
+.test-panel { margin: 20px 0 24px; padding: 18px; border: 1px solid #d8dee4; border-radius: 10px; background: #fff; }
+.test-panel h2 { margin: 0 0 5px; font-size: 18px; }
+.test-panel p { margin: 0 0 14px; color: #536471; }
+.test-panel > small { display: block; margin-top: 12px; color: #66727d; }
+.test-flags { display: flex; flex-wrap: wrap; gap: 6px; }
+.test-flag { position: relative; display: inline-grid; place-items: center; box-sizing: border-box; width: 44px; height: 38px; padding: 4px; border: 1px solid #d8dee4; border-radius: 8px; background: #f6f8fa; font: 24px/1 sans-serif; }
+.test-flag[aria-pressed="true"] { border-color: #2f81f7; background: #eaf3ff; }
+.test-flag img { position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px); object-fit: contain; }
+.test-flag[aria-pressed="true"] .test-original { color: transparent; }
 .empty { margin: 0; color: #66727d; }
 .search { display: block; margin: 24px 0 14px; }
 .search span { display: block; margin-bottom: 6px; font-weight: 650; }
@@ -88,8 +97,11 @@ footer a:hover { text-decoration: underline; }
 @media (prefers-color-scheme: dark) {
   :root { background: #10171e; color: #f0f3f4; }
   header p, .introduction, .code, .region-count, .empty, .search-hint, .sites-option small, #site-controls > p, .help-panel p { color: #9aa8b3; }
-  button, .search input, .site-entry input, .sites-panel, .region, .flag { background: #18242e; }
-  .sites-panel, #site-controls, .site-chip, .region, .enabled-panel { border-color: #38444d; }
+  button, .search input, .site-entry input, .sites-panel, .test-panel, .region, .flag { background: #18242e; }
+  .sites-panel, #site-controls, .site-chip, .test-panel, .test-flag, .region, .enabled-panel { border-color: #38444d; }
+  .test-panel p, .test-panel > small { color: #9aa8b3; }
+  .test-flag { background: #10171e; }
+  .test-flag[aria-pressed="true"] { background: #173b62; }
   .region-head, .enabled-heading { background: #202f3b; }
   .enabled-heading small { color: #9aa8b3; }
   .flags, .enabled-flags { background: #38444d; }

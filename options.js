@@ -17,9 +17,34 @@ const selectedSitesMode = document.querySelector('#selected-sites-mode');
 const siteControls = document.querySelector('#site-controls');
 const allFlagsMode = document.querySelector('#all-flags-mode');
 const selectedCount = document.querySelector('#selected-count');
+const testFlagsRoot = document.querySelector('#test-flags');
+const TEST_CODES = ['US', 'GB', 'AU', 'CA', 'NZ', 'JP', 'ZA', 'BR', 'IN', 'DE', 'FR', 'IE', 'EU', 'UN', 'XK', 'CQ', 'AC', 'DG'];
 
 const idFor = code => code.toLowerCase();
-const countryName = code => specialNames[code] || names.of(code.toUpperCase()) || code;
+const countryName = code => specialNames[code.toLowerCase()] || names.of(code.toUpperCase()) || code;
+const flagSequence = code => [...code.toUpperCase()].map(letter => String.fromCodePoint(0x1f1e6 + letter.charCodeAt(0) - 65)).join('');
+
+function renderTestFlags() {
+  testFlagsRoot.replaceChildren();
+  TEST_CODES.forEach(code => {
+    const id = idFor(code);
+    const enabled = !disabled.has(id);
+    const name = countryName(code);
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 'test-flag'; button.dataset.id = id;
+    button.setAttribute('aria-pressed', String(enabled));
+    button.setAttribute('aria-label', `${name} flag: ${enabled ? 'enabled' : 'disabled'}`);
+    button.title = `${name} (${code})`;
+    const original = document.createElement('span'); original.className = 'test-original'; original.textContent = flagSequence(code);
+    button.append(original);
+    if (enabled) {
+      const image = document.createElement('img'); image.src = `assets/flags/${id}.svg`; image.alt = ''; image.setAttribute('aria-hidden', 'true');
+      button.append(image);
+    }
+    button.addEventListener('click', () => setFlag(id, disabled.has(id)));
+    testFlagsRoot.append(button);
+  });
+}
 
 function flagControl(rawCode, compact = false) {
   // All labels are assembled with DOM APIs; country names never become HTML.
@@ -139,6 +164,7 @@ function renderEnabled() {
   allFlagsMode.setAttribute('aria-checked', String(active.length === ALL_IDS.length));
   allFlagsMode.setAttribute('aria-label', active.length === ALL_IDS.length ? 'Disable all flags' : 'Enable all flags');
   document.querySelector('.all-flags-control > span').textContent = active.length === ALL_IDS.length ? 'Disable all' : 'Enable all';
+  renderTestFlags();
   if (!active.length) {
     const empty = document.createElement('p'); empty.className = 'empty'; empty.textContent = 'No flags are currently enabled.'; enabledRoot.append(empty); return;
   }
